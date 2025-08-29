@@ -44,14 +44,14 @@ class Test extends AnyFunSuite with BeforeAndAfter {
 
   // Test case for getDsl method
   val dslMatch =
-    """age$age:LongType
-name.LastName$LastName:StringType
-name.nameOne$nameOne:StringType
-name.nickNames@nickNames
-	nickNames$nickNames:StringType
-race$race:StringType
-weapon@weapon
-	weapon$weapon:StringType"""
+    """`age`$`age`:LongType
+`name.LastName`$`LastName`:StringType
+`name.nameOne`$`nameOne`:StringType
+`name.nickNames`@`nickNames`
+	`nickNames`$`nickNames`:StringType
+`race`$`race`:StringType
+`weapon`@`weapon`
+	`weapon`$`weapon`:StringType"""
 
   test("Test for DSL Generate") {
     assert(dslMatch == quenyaDsl.getDsl(df))
