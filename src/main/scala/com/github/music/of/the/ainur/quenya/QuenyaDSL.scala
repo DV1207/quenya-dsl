@@ -30,10 +30,10 @@ object QuenyaDSL extends CombinatorParser with SparkCodeGenerator with Serializa
       dataType match {
         case  fieldType @ (BinaryType | FloatType | ByteType 
 | IntegerType | LongType | BooleanType | StringType |
-            TimestampType | DoubleType | ShortType) => dslBuilder += s"""${fieldGen(fields,precedence)}$$${aliasGen(fields,shortName)}:${fieldType.toString}"""
+            TimestampType | DoubleType | ShortType) => dslBuilder += s"""`${fieldGen(fields,precedence)}`$$`${aliasGen(fields,shortName)}`:${fieldType.toString}"""
         case ArrayType(dt,_) => {
           val alias = aliasGen(fields,shortName)
-          dslBuilder += s"""${fieldGen(fields,precedence)}@$alias"""
+          dslBuilder += s"""`${fieldGen(fields,precedence)}`@`$alias`"""
           generator(name,dt, List(alias), precedence + 1,dslBuilder = dslBuilder)
         }
         case StructType(fieldsStruct) => fieldsStruct.map(fd => generator(fd.name,fd.dataType,fields :+ fd.name,precedence,dslBuilder = dslBuilder))
