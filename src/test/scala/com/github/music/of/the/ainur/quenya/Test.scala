@@ -53,6 +53,9 @@ class Test extends AnyFunSuite with BeforeAndAfter {
 `weapon`@`weapon`
 	`weapon`$`weapon`:StringType"""
 
+  println("##########")
+  println(quenyaDsl.getDsl(df))
+  println("##########")
   test("Test for DSL Generate") {
     assert(dslMatch == quenyaDsl.getDsl(df))
   }
